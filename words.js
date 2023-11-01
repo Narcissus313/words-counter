@@ -3,27 +3,27 @@ const message1 =
 
 const message2 = "a b a a b b b b b c c c c a c c";
 
-const message3 =
-	"e e e e \nDDD \nddd DdD: \nddd \nddd aa aA Aa, bb cc cC e e e";
+const message3 = "e e e e DDD ddd DdD: ddd ddd aa aA Aa, bb cc cC e e e";
 
 const message4 = " //wont won't won't";
 
 const message5 = "   ";
 
 const wordsCounter3 = function (message) {
-	const cleanedMessage = message //makes the text lowercase and removes extra spaces and ascii characters
+	const cleanedMessage = message
 		.toLowerCase()
 		.replace(/\s+/g, " ")
 		.replace(/[^\w\s' ]|_/g, "")
-		.trim();
+		.trim(); //makes the text lowercase and removes extra spaces and ascii characters
+
 	if (cleanedMessage.length == 0) return [];
+	console.log("cleanedMessage: ", cleanedMessage);
 
 	const messageArray = cleanedMessage.split(" ").filter((w) => w !== "'"); //array of words splitted
 
 	const messageSet = [...new Set(messageArray)]; //words without any repeats for faster navigation
 
-	const numberOfWordsUsedInText =
-		messageSet.length > 2 ? 3 : messageSet.length; //sets the output length based on input length
+	const numberOfWordsInOutput = messageSet.length > 2 ? 3 : messageSet.length; //sets the output length based on input length
 
 	const sortedTextArray = messageArray.sort();
 
@@ -51,7 +51,7 @@ const wordsCounter3 = function (message) {
 	result = result.sort((a, b) => b.num - a.num);
 
 	const threeWords = result
-		.slice(0, numberOfWordsUsedInText)
+		.slice(0, numberOfWordsInOutput)
 		.map((obj) => obj.word);
 	return threeWords;
 };
