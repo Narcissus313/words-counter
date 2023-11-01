@@ -15,11 +15,10 @@ const wordsCounter3 = function (message) {
 		.toLowerCase()
 		.replace(/\s+/g, " ")
 		.replace(/[^\w\s' ]|_/g, "")
-		.replace(/^(?!.*'.*'').*[^\w\s']|_.*$/g, "")
 		.trim();
 	if (cleanedMessage.length == 0) return [];
 
-	const messageArray = cleanedMessage.split(" "); //array of words splitted
+	const messageArray = cleanedMessage.split(" ").filter((w) => w !== "'"); //array of words splitted
 
 	const messageSet = [...new Set(messageArray)]; //words without any repeats for faster navigation
 
