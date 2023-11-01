@@ -32,6 +32,7 @@ const wordsCounter3 = function (message) {
 	let sum = 1;
 
 	while (navigationStartIndex < sortedTextArray.length) {
+		//returns an array of objects containing the words and their occurrences
 		if (
 			sortedTextArray[navigationStartIndex] !==
 			sortedTextArray[navigationStartIndex + 1]
@@ -48,9 +49,8 @@ const wordsCounter3 = function (message) {
 		sum++;
 	}
 
-	result = result.sort((a, b) => b.num - a.num);
-
-	const threeWords = result
+	const threeWords = result //returns the three words with the most occurrence
+		.sort((a, b) => b.num - a.num)
 		.slice(0, numberOfWordsInOutput)
 		.map((obj) => obj.word);
 	return threeWords;
